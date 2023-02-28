@@ -116,3 +116,5 @@ module.exports = team => {
 </html>
     `;
 };
+
+module.exports = generateTeam;

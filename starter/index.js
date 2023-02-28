@@ -4,6 +4,8 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+ // array of Employee objects (array of Manager, or Engineers, or Interns)
+const team = [];
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -24,23 +26,24 @@ function createEngineer(team) {
         },
         {
             type: 'input',
-            id: 'id',
+            name: 'id',
             message: "What is the engineer's ID?",
         },
         {
             type: 'input',
-            email: 'email',
+            name: 'email',
             message: "What is the engineer's e-mail address?"
         },
         {
             type: 'input',
-            github: 'github',
+            name: 'github',
             message: "What is the engineer's GitHub username?"
         }
     ]).then((engineerDetails) => {
         // Initialise Engineer class to create Manager object
-        // const engineer = new Engineer(engineerDetails.name, engineerDetails.id, engineerDetails.email, engineerDetails.githubUsername)
-        // team.push(engineer);
+        const e = new Engineer(engineerDetails.name, engineerDetails.id, engineerDetails.email, engineerDetails.github)
+        
+        team.push(e);
         createTeam(team); // at this point we add an engineer to the team array
     });
 }
@@ -58,23 +61,23 @@ function createIntern(team) {
         },
         {
             type: 'input',
-            id: 'id',
+            name: 'id',
             message: "What is the intern's ID?",
         },
         {
             type: 'input',
-            email: 'email',
+            name: 'email',
             message: "What is the intern's e-mail address?"
         },
         {
             type: 'input',
-            school: 'school',
+            name: 'school',
             message: "What is the intern's school?"
         },
     ]).then((internDetails) => {
         // Initialise Intern class to create Manager object
-        // const intern = new Intern(internDetails.name, internDetails.id, internDetails.email, internDetails.school)
-        // team.push(intern);
+        const i = new Intern(internDetails.name, internDetails.id, internDetails.email, internDetails.school)
+        team.push(i);
         createTeam(team); // at this point we add an intern to the team array
     });
 }
@@ -122,25 +125,29 @@ function createManager(team) {
         },
         {
             type: 'input',
-            id: 'id',
-            email: 'email',
+            name: 'id',
             message: "What is the manager's ID?"
         },
         {
             type: 'input',
-            officeNumber: 'officeNumber',
+            name: 'email',
+            message: "What is the manager's e-mail?"
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
             message: "What is the manager's office number?"
         }
     ]).then((managerDetails) => {
         // Initialise Manager class to create Manager object
-        // const manager = new Manager(managerDetails.name, managerDetails.id, managerDetails.email, managerDetails.officeNumber)
-        // team.push(manager);
+        const m = new Manager(managerDetails.name, managerDetails.id, managerDetails.email, managerDetails.officeNumber)
+        team.push(m);
         createTeam(team); // at this point, team array have a manager in it
     });
 }
 
 function start() {
-    const team = []; // array of Employee objects (array of Manager, or Engineers, or Interns)
+    
     // Employee can be Manager, Engineer, or Intern
     createManager(team);
 }
