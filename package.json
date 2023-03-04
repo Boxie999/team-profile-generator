@@ -1,19 +1,19 @@
-
 {
   "name": "module14-challenge",
   "version": "1.0.0",
   "description": "Module 12's Challenge",
   "main": "index.js",
   "directories": {
-      "lib": "lib"
+    "lib": "lib"
   },
   "scripts": {
-      "test": "jest --verbose test"
+    "test": "jest --verbose test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-      "inquirer": "^8.2.2",
-      "jest": "^27.5.1"
+    "bootstrap": "^5.2.3",
+    "inquirer": "^8.2.2",
+    "jest": "^27.5.1"
   }
 }
