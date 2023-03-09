@@ -4,6 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const bootstrap = require("bootstrap");
 
  // array of Employee objects (array of Manager, or Engineers, or Interns)
 const team = [];
